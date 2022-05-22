@@ -1,0 +1,15 @@
+.signup__container{
+    max-width: 1024px;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    aside, form{
+        margin: 1% 2%;
+        h1{
+            font-size: 30px;
+        }
+        p{
+            font-size: 18px;
+        }
+    }
+}

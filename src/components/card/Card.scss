@@ -1,0 +1,106 @@
+.card__body {
+    padding: 2%;
+    margin: 1%;
+    border-bottom: 1px dashed rgb(91, 87, 87);
+
+    .card__main {
+        display: flex;
+        flex-direction: column;
+
+        img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .card__desc {
+        font-size: 12px;
+        background-color: #f2f2f2;
+        position: relative;
+        padding: 2%;
+    }
+
+    .card__btnContainer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1%;
+
+        p {
+            padding-left: 5px;
+        }
+
+        .card__btn {
+            appearance: none;
+            border: 0;
+            background-color: #d10157;
+            padding: 8px 12px;
+            font-size: 15px;
+            color: #fff;
+            cursor: pointer;
+        }
+    }
+
+    .card__btn-lg {
+        appearance: none;
+        border: 0;
+        background-color: #d10157;
+        padding: 8px 12px;
+        font-size: 15px;
+        color: #fff;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    h1 {
+        font-size: 15px;
+        min-height: 60px;
+        padding: 1%;
+    }
+    @media screen and (min-width: 992px) {
+        .card__btn-lg{
+            display: none;
+        }
+        .card__desc {
+            p {
+                position: relative;
+                display: inline-block;
+                word-wrap: break-word;
+                overflow: hidden;
+                height: 60px;
+                line-height: 15px;
+                text-align: justify;
+                font-weight: 600;
+            }
+
+            p::after {
+                content: "...";
+                position: absolute;
+                right: -12px;
+                bottom: 4px;
+            }
+        }
+    }
+    @media screen and (max-width: 992px) {
+        h1{
+            min-height: 35px;
+        }
+        .card__main {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            img {
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .card__btnContainer {
+            display: none;
+        }
+    }
+}
+

@@ -3,16 +3,13 @@ import React, { createContext, useState, useMemo } from "react";
 export const CartContext = createContext();
 
 function CartContextprovider({ children }) {
-  const [cart, setCart] = useState({
-    showCart : false,
-    cartItems : {}
-  });
+  const [showCart, setshowCart] = useState(false);
   const value = useMemo(
     () => ({
-      cart,
-      setCart,
+      showCart,
+      setshowCart,
     }),
-    [cart, setCart]
+    [showCart, setshowCart]
   );
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }

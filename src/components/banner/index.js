@@ -8,7 +8,7 @@ function Banner({ category, idx }) {
       <img
         src={category.imageUrl}
         alt={category.name}
-        style={{ height: "10rem" }}
+        className="banner__img"
       />
     );
   };

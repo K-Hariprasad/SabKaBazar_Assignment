@@ -4,27 +4,27 @@ import { Link, useNavigate } from "react-router-dom";
 import { ReactComponent as ShoppingCartIcon } from "../../assets/icons/cart.svg";
 import { CartContext } from "../../context/CartContext";
 import { useSelector, useDispatch } from "react-redux";
-import { userLogout } from '../../redux/actions/userActions'
+import { userLogout } from '../../redux/actions/userActions';
 function Header() {
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.userState.user);
+  const cart = useSelector((state) => state.cartState.cart);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const handleCartSelection = (cart, setCart) => {
-    user ? setCart({ ...cart, showCart: !cart.showCart }) : navigate("/login");
+  const handleCartSelection = (showCart, setshowCart) => {
+    user ? setshowCart(!showCart) : navigate("/login");
   };
   return (
     <CartContext.Consumer>
-      {({ cart, setCart }) => (
+      {({ showCart, setshowCart }) => (
         <header>
           <div className="wrapper">
             <div className="logo">
-              <picture>
-                <img
-                  src={"assets/images/logo.png"}
-                  alt="Logo"
-                  className="logoImg"
-                />
-              </picture>
+              <img
+                tabIndex={0}
+                src={"assets/images/logo.png"}
+                alt="Sabkabazar Logo"
+                className="logoImg"
+              />
             </div>
             <nav>
               <ul className="nav-list">
@@ -53,14 +53,13 @@ function Header() {
                   </li>
                 </ul>
               )}
-              <div
+              <button
                 className="cart__btn"
-                role="button"
-                onClick={() => handleCartSelection(cart, setCart)}
+                onClick={() => handleCartSelection(showCart, setshowCart)}
               >
-                <ShoppingCartIcon height={24} width={24} fill="#d10157" />
-                <span>{Object.keys(cart["cartItems"]).length} Item</span>
-              </div>
+                <ShoppingCartIcon aria-label="cart" height={24} width={24} fill="#d10157" />
+                <span>{cart?.length} Item</span>
+              </button>
             </div>
           </div>
         </header>

@@ -6,6 +6,11 @@ import "./Products.scss";
 import Spinner from "../../components/spinner";
 import { CartContext } from "../../context/CartContext";
 import Cart from "../../components/cart";
+import { useSelector } from "react-redux";
+import useCart from "../../hooks/useCart";
+import { ReactComponent as ArrowDownIcon } from "../../assets/icons/arrowDown.svg";
+import { ReactComponent as ArrowRightIcon } from "../../assets/icons/arrowRight.svg";
+
 function Products() {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -14,9 +19,12 @@ function Products() {
   const [categories, setcategories] = useState([]);
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+  const [category, setCategory] = useState("");
+  const user = useSelector((state) => state.userState.user);
+  const [cart, addToCart] = useCart(user?.id);
 
   useEffect(() => {
-    window.scroll(0,0)
+    window.scroll(0, 0);
     async function fetchData() {
       try {
         setLoading(true);
@@ -55,36 +63,73 @@ function Products() {
   }, [categoryParam, categories]);
 
   const handleCategorySelection = (item) => {
-    if(categoryParam){
-      categoryParam !== item.id ? navigate(`/products?category=${item.id}`) : navigate(`/products`)
-    }
-    else{
-      navigate(`/products?category=${item.id}`)
+    if (categoryParam) {
+      categoryParam !== item.id
+        ? navigate(`/products?category=${item.id}`)
+        : navigate(`/products`);
+    } else {
+      navigate(`/products?category=${item.id}`);
     }
   };
-
+  const openMobileCategory = (item) => {
+    window.scroll(0, 0);
+    setProducts([]);
+    handleCategorySelection(item);
+    category === item.id ? setCategory("") : setCategory(item.id);
+  };
   return (
     <CartContext.Consumer>
-      {({cart}) => (
+      {({ showCart }) => (
         <section className="products__container">
-          { cart?.showCart && <Cart/>}
+          {showCart && <Cart cartItems={cart} addToCart={addToCart} />}
           {loading && <Spinner />}
           <aside>
             {categories.length > 0 &&
               categories.map((item) => (
-                <h1
-                  className={categoryParam === item.id && 'category-active'}
+                <p
+                  className={
+                    categoryParam === item.id ? "category-active" : undefined
+                  }
                   role="button"
                   key={item.id}
                   onClick={() => handleCategorySelection(item)}
                 >
                   {item.name}
-                </h1>
+                </p>
               ))}
           </aside>
           <div className="products__cardContainer">
             {products.length > 0 &&
-              products.map((item) => <Card product={item} key={item.id} />)}
+              products.map((item) => (
+                <Card product={item} key={item.id} addToCart={addToCart} />
+              ))}
+          </div>
+          <div className="products__mobile-cardContainer">
+            {categories.length > 0 &&
+              categories.map((item) => (
+                <div key={item.id}>
+                  <div className="products__mobile-category" role="button" onClick={() => openMobileCategory(item)}>
+                    <p>
+                      {item.name}
+                    </p>
+                    {category === item.id?<ArrowDownIcon width="24px" height="24px" fill="#fff" />:
+                    <ArrowRightIcon width="24px" height="24px" fill="#fff" />
+                    }
+                  </div>
+                  {category === item.id && (
+                    <div>
+                      {products.length > 0 &&
+                        products.map((ele) => (
+                          <Card
+                            product={ele}
+                            key={ele.id}
+                            addToCart={addToCart}
+                          />
+                        ))}
+                    </div>
+                  )}
+                </div>
+              ))}
           </div>
         </section>
       )}

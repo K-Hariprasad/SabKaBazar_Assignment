@@ -14,6 +14,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        padding: 1%;
         h1{
             margin-bottom: 0;
         }
@@ -28,6 +29,25 @@
             color: #fff;
             padding: 0.5rem;
             cursor: pointer;
+        }
+    }
+    .banner__img{
+        height: 10rem;
+    }
+    @media screen and (max-width: 482px){
+        .banner__img{
+            height: 5rem;
+        }
+        .banner__details{
+            h1{
+                font-size: 16px;
+            }
+            p{
+                font-size: 12px;
+            }
+        }
+        .banner__btn{
+            font-size: 12px;
         }
     }
 }

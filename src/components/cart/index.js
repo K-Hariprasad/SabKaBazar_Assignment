@@ -3,38 +3,39 @@ import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 import "./Cart.scss";
 import CartCard from "./CartCard";
-function Cart() {
+
+function Cart({cartItems, addToCart}) {
   const navigate = useNavigate()
   const cartSum = (items) => {
     let sum = Object.keys(items).reduce((acc, curr) => {
-      acc += items[curr].count * items[curr].price;
+      acc += items[curr].count * items[curr].item.price;
       return acc;
     }, 0);
     return sum;
   };
   return (
     <CartContext.Consumer>
-      {({ cart, setCart }) => (
+      {({ showCart, setshowCart }) => (
         <main className="cart__main">
           <section className="cart__container">
             <div className="cart__contents">
               <div className="cart__header">
-                <h1>My Cart ({Object.keys(cart["cartItems"]).length} item)</h1>
+                <h1>My Cart ({cartItems.length} item)</h1>
                 <button
-                  onClick={() => setCart({ ...cart, showCart: !cart.showCart })}
+                  onClick={() => setshowCart(!showCart)}
                 >
                   X
                 </button>
               </div>
               <div className="cart__body">
-                {Object.keys(cart["cartItems"]).length > 0 ? (
+                {cartItems.length > 0 ? (
                   <div>
-                  {Object.keys(cart["cartItems"]).map((item) => (
+                  {cartItems.map((e) => (
                     <CartCard
-                      key={item}
-                      item={cart["cartItems"][item]}
-                      cart={cart}
-                      setCart={setCart}
+                      key={e.id}
+                      item={e.item}
+                      count={e.count}
+                      addToCart={addToCart}
                     />
                   ))}
                   <div className="cart__lowestPriceTag">
@@ -49,17 +50,17 @@ function Cart() {
                   </div>
                 )}
               </div>
-              {cartSum(cart.cartItems) > 0 ? (
+              {cartSum(cartItems) > 0 ? (
                 <div className="cart__footer">
                   <p>Promo code can be applied on payment page</p>
                   <button className="cart__btn">
                     <span>Proceed to Checkout</span>
-                    <span>Rs.{cartSum(cart.cartItems)}</span>
+                    <span>Rs.{cartSum(cartItems)}</span>
                   </button>
                 </div>
               ) : (
                 <div className="cart__footer">
-                  <button className="cart__btn" style={{justifyContent:'center'}} onClick={()=>{navigate('/products'); setCart({ ...cart, showCart: !cart.showCart })}}>
+                  <button className="cart__btn" style={{justifyContent:'center'}} onClick={()=>{navigate('/products'); setshowCart(!showCart)}}>
                     <span>Start shopping</span>
                   </button>
                 </div>

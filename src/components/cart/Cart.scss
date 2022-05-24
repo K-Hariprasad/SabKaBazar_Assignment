@@ -99,6 +99,11 @@
                                 }
                             }
                         }
+                        @media screen and (max-width: 480px){
+                            .cartCard__pricing{
+                                gap : 45px
+                            }
+                        }
                     }
                 }
                 .cart__empty{

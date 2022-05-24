@@ -63,6 +63,9 @@
         .card__btn-lg{
             display: none;
         }
+        .card__btn-sm{
+            display: none;
+        }
         .card__desc {
             p {
                 position: relative;
@@ -102,5 +105,28 @@
             display: none;
         }
     }
+    @media screen and (max-width: 540px) {
+        .card__btn-lg{
+            display: none;
+        }
+        .card__btn-sm{
+            display: block;
+            appearance: none;
+            border: 0;
+            background-color: #d10157;
+            padding: 8px 12px;
+            font-size: 12px;
+            color: #fff;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+        .card__desc{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    }
+
 }
 

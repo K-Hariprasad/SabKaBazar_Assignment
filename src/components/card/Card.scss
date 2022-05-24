@@ -104,6 +104,9 @@
         .card__btnContainer {
             display: none;
         }
+        .card__btn-sm{
+            display: none;
+        }
     }
     @media screen and (max-width: 540px) {
         .card__btn-lg{

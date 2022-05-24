@@ -1,0 +1,10 @@
+@mixin btnStyle($color:'#fff', $bgcolor){
+    appearance: none;
+    border:0;
+    color: $color;
+    background-color: $bgcolor;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

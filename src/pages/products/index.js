@@ -86,16 +86,15 @@ function Products() {
           <aside>
             {categories.length > 0 &&
               categories.map((item) => (
-                <p
+                <button
                   className={
                     categoryParam === item.id ? "category-active" : undefined
                   }
-                  role="button"
                   key={item.id}
                   onClick={() => handleCategorySelection(item)}
                 >
                   {item.name}
-                </p>
+                </button>
               ))}
           </aside>
           <div className="products__cardContainer">
@@ -108,14 +107,14 @@ function Products() {
             {categories.length > 0 &&
               categories.map((item) => (
                 <div key={item.id}>
-                  <div className="products__mobile-category" role="button" onClick={() => openMobileCategory(item)}>
-                    <p>
+                  <button className="products__mobile-category" onClick={() => openMobileCategory(item)}>
+                    <span>
                       {item.name}
-                    </p>
+                    </span>
                     {category === item.id?<ArrowDownIcon width="24px" height="24px" fill="#fff" />:
                     <ArrowRightIcon width="24px" height="24px" fill="#fff" />
                     }
-                  </div>
+                  </button>
                   {category === item.id && (
                     <div>
                       {products.length > 0 &&

@@ -1,5 +1,5 @@
+@use '../../styles/button';
 $primary-color : #50dae4;
-
 @mixin label-active() {
     font-size: 0.75rem;
     transform: translateY(-1rem);
@@ -69,16 +69,11 @@ $primary-color : #50dae4;
 }
 
 .btn {
+    @include button.btnStyle(#fff,#d10157);
     margin-top: 20px;
     width: 100%;
-    appearance: none;
-    border: 0;
-    background-color: #d10157;
     padding: 0.75rem;
     font-size: 1.2rem;
-    color: #fff;
-    cursor: pointer;
-
     &:disabled {
         background-color: #d101588e;
     }

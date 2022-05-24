@@ -1,3 +1,4 @@
+@use '../../styles/button';
 header {
     padding: 0.5rem 1rem 0 1rem;
     background-color: #fff;
@@ -26,7 +27,6 @@ header {
     
     li.nav-item {
         list-style-type: none;
-    
         a {
             text-decoration: none;
             color: #444;
@@ -34,16 +34,10 @@ header {
         }
     }
     .cart__btn{
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        @include button.btnStyle(#000,#f2f2f2);
         margin-top: 2px;
         gap: 5px;
-        cursor: pointer;
-        background-color: #f2f2f2;
-        padding: 10px;
-        appearance: none;
-        border: 0;
+        padding: 10px;     
     }
     @media screen and (max-width: 600px) {
         nav, ul{

@@ -1,20 +1,21 @@
+@use '../../styles/button';
 .products__container {
     min-height: 100vh;
     max-width: 1024px;
     margin: 0 auto;
     display: flex;
-
     aside {
         background-color: #eaeaea;
         flex: 1;
-        p {
+        button {
+            @include button.btnStyle(rgb(90, 90, 90), transparent);
+            width: 100%;
+            justify-content: flex-start;
             padding: 5% 10%;
             margin: 0;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 400;
-            color: rgb(90, 90, 90);
             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            cursor: pointer;
         }
         .category-active{
             font-weight: 600;
@@ -48,14 +49,12 @@
             display: block;
             width: 100%;
             .products__mobile-category{
-                display: flex;
-                align-items: center;
+                @include button.btnStyle(#fff, #d10157);
                 justify-content: space-between;
-                background-color: #d10157;
                 padding: 4% 2%;
                 margin-bottom: 2px;
-                cursor: pointer;
-                p{
+                width: 100%;
+                span{
                     margin: 2px 0;
                     color: #fff;
                 }

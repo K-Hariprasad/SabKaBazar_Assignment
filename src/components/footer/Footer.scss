@@ -4,3 +4,13 @@ footer {
     text-align: center;
     width: 100%;
 }
+@media screen and (max-width: 768px) {
+    footer{
+        font-size: 15px;
+    }
+}
+@media screen and (max-width: 480px) {
+    footer{
+        font-size: 12px;
+    }
+}

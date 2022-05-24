@@ -1,55 +1,6 @@
 {
-  "users": [
-    {
-      "email": "hari@gmail.com",
-      "password": "$2a$10$flrI38CmPvX1K5bTziMJcO2SUb3YdvRzRNrBq5B0ADc0kEaijNPbW",
-      "firstName": "Hariprasad",
-      "lastName": "K",
-      "id": 1
-    },
-    {
-      "email": "harik@gmail.com",
-      "password": "$2a$10$ony6MzcWt5VGQaaX2vg6F.NJgSTktxEy3lf94.XQew1SPZt2P1zwm",
-      "firstName": "Hariprasad",
-      "lastName": "K",
-      "id": 2
-    },
-    {
-      "email": "h@gmail.com",
-      "password": "$2a$10$JnmD1e9EM/M6CLzaGuXqJe625P4oeE9FjhuGeB6rm53N8US8lJ.Oa",
-      "firstName": "Hari",
-      "lastName": "K",
-      "id": 3
-    },
-    {
-      "email": "h1@gmail.com",
-      "password": "$2a$10$ry27tKZv6qEYb6QqGN3Kkuehakumw9APQvYlS3vAJHqJkpNAzdZDG",
-      "firstName": "Harih",
-      "lastName": "K",
-      "id": 4
-    },
-    {
-      "email": "h11@gmail.com",
-      "password": "$2a$10$2NpdLMpwzSH8nj2kK1n1i.CDhrvC5Th/Jc1uRrApmscUm699orfH2",
-      "firstName": "Harih",
-      "lastName": "K",
-      "id": 5
-    },
-    {
-      "email": "hp@gmail.com",
-      "password": "$2a$10$wKpSx0baky76T9dQtWP3WevPNLwKdvcLQre4wW/JSLFcE/z.yQQki",
-      "firstName": "Hari",
-      "lastName": "K",
-      "id": 6
-    },
-    {
-      "email": "hariprasadk@gmail.com",
-      "password": "$2a$10$7tizeCKbbrYogNjO3NB.JuWRYR20dEvUTk3Y8vw/uzdoHlO.VIyFO",
-      "firstName": "Hariprasad",
-      "lastName": "K",
-      "id": 7
-    }
-  ],
+  "users": [],
+  "cart":[],
   "categories": [
     {
       "name": "Beverages",

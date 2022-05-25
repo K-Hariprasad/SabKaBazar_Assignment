@@ -10,9 +10,10 @@ const useForm = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const validate = (name, value, pattern, errMsg) => {
+  const validate = (name, value, item) => {
+    const {pattern, errMsg, fieldname} = item
     if (!value.trim()) {
-      setErrors({ ...errors, [name]: "Field should not be empty!" });
+      setErrors({ ...errors, [name]: `${fieldname} should not be empty!` });
     } else if (name === "confirmPassword") {
       if (value !== values.password) {
         setErrors({
@@ -29,10 +30,10 @@ const useForm = () => {
     }
   };
 
-  const handleFieldChange = (e, pattern, errMsg) => {
+  const handleFieldChange = (e, item) => {
     const fieldName = e.target.name;
     const fieldValue = e.target.value;
-    validate(fieldName, fieldValue, pattern, errMsg);
+    validate(fieldName, fieldValue,item);
     setValues({ ...values, [fieldName]: fieldValue });
   };
 

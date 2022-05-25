@@ -15,7 +15,7 @@ function Card({ product, addToCart }) {
     <CartContext.Consumer>
       {({ setshowCart }) => (
         <div className="card__body">
-          <h1>{product.name}</h1>
+          <h1 tabIndex={0}>{product.name}</h1>
           <div className="card__main">
             <img src={product.imageURL} alt={product.name} />
             <div className="card__desc">
@@ -26,12 +26,24 @@ function Card({ product, addToCart }) {
                   user ? handleBuyNow(product, setshowCart) : navigate("/login")
                 }
               >
-                Buy Now @ Rs.{product.price}
+                Buy Now @{" "}
+                {`${new Intl.NumberFormat("en-IN", {
+                  style: "currency",
+                  currency: "INR",
+                }).format(product.price)}
+              `}
               </button>
             </div>
           </div>
+
           <div className="card__btnContainer">
-            <p>MRP. Rs.{product.price}</p>
+            <p tabIndex={0}>
+              {`MRP ${new Intl.NumberFormat("en-IN", {
+                style: "currency",
+                currency: "INR",
+              }).format(product.price)}
+              `}
+            </p>
             <button
               className="card__btn"
               onClick={() =>
@@ -47,7 +59,12 @@ function Card({ product, addToCart }) {
               user ? handleBuyNow(product, setshowCart) : navigate("/login")
             }
           >
-            Buy Now @ Rs.{product.price}
+            Buy Now @{" "}
+            {`${new Intl.NumberFormat("en-IN", {
+              style: "currency",
+              currency: "INR",
+            }).format(product.price)}
+              `}
           </button>
         </div>
       )}

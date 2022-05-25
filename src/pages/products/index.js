@@ -83,7 +83,7 @@ function Products() {
         <section className="products__container">
           {showCart && <Cart cartItems={cart} addToCart={addToCart} />}
           {loading && <Spinner />}
-          <aside>
+          <nav>
             {categories.length > 0 &&
               categories.map((item) => (
                 <button
@@ -96,14 +96,14 @@ function Products() {
                   {item.name}
                 </button>
               ))}
-          </aside>
-          <div className="products__cardContainer">
+          </nav>
+          <section className="products__cardContainer">
             {products.length > 0 &&
               products.map((item) => (
                 <Card product={item} key={item.id} addToCart={addToCart} />
               ))}
-          </div>
-          <div className="products__mobile-cardContainer">
+          </section>
+          <section className="products__mobile-cardContainer">
             {categories.length > 0 &&
               categories.map((item) => (
                 <div key={item.id}>
@@ -129,7 +129,7 @@ function Products() {
                   )}
                 </div>
               ))}
-          </div>
+          </section>
         </section>
       )}
     </CartContext.Consumer>

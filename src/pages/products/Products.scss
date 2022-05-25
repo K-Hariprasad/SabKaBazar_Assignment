@@ -4,7 +4,7 @@
     max-width: 1024px;
     margin: 0 auto;
     display: flex;
-    aside {
+    nav {
         background-color: #eaeaea;
         flex: 1;
         button {
@@ -39,7 +39,7 @@
     }
     
     @media screen and (max-width: 540px) {
-        aside{
+        nav{
             display: none;
         }
         .products__cardContainer {

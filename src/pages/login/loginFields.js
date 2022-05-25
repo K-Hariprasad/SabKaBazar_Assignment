@@ -9,7 +9,7 @@ export const loginFields = [
     pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
     errMsg: 'Please enter valid Email!',
     "aria-invalid": "true",
-    "aria-errormessage": "email_error",
+    "ariaErrormessage": "email_error",
   },
   {
     type: "password",
@@ -21,6 +21,6 @@ export const loginFields = [
     pattern: /^.{1,}$/,
     errMsg: 'Please enter password!',
     "aria-invalid": "true",
-    "aria-errormessage": "email_error",
+    "ariaErrormessage": "password_error",
   },
 ];

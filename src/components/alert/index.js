@@ -1,9 +1,10 @@
 import React from "react";
 import './Alert.scss'
-function Alert({ type, message }) {
+const Alert = (props) => {
+  let {type, message} = props
   return (
     <div className={`alertBlock__main ${type}`}>
-      <span>{message}</span>
+      <span tabIndex={0}>{message}</span>
     </div>
   );
 }

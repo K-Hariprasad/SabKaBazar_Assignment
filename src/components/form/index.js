@@ -4,9 +4,10 @@ import Alert from "../alert";
 import "./Form.scss";
 function FormComp({ fields, formName }) {
   const { errors, handleFieldChange, handleSubmit} = useForm()
+  
   return (
     <form noValidate onSubmit={(e)=>handleSubmit(e, fields, formName)}>
-      {errors && errors["submitError"] && <Alert message={errors["submitError"]} type={"error"}/> }
+      {errors && errors["submitError"] && <Alert tabIndex={0} message={errors["submitError"]} type={"error"}/> }
       <div className="field__container">
         {fields.map((item) => (
           <div className="field__block" key={item.id}>
@@ -17,11 +18,13 @@ function FormComp({ fields, formName }) {
               autoComplete={item.autocomplete}
               type={item.type}
               placeholder=" "
-              onChange={(e)=>handleFieldChange(e,item.pattern, item.errMsg)}
-              onBlur={(e)=>handleFieldChange(e,item.pattern, item.errMsg)}
-              aria-invalid="true" aria-errormessage="err1"
+              aria-required={true}
+              onChange={(e)=>handleFieldChange(e,item)}
+              onBlur={(e)=>handleFieldChange(e,item)}
+              aria-invalid="true" 
+              aria-errormessage={item.ariaErrormessage}
             />
-            {errors&& errors[item.name] && <span id='err1' tabIndex={0} style={{color:'red', fontSize:'12px'}}>{errors[item.name]}</span>}
+            {errors&& errors[item.name] &&<span tabIndex={0} id={item.ariaErrormessage} aria-live="assertive" role="alert" className="field__error" >{errors[item.name]}</span>}
             <label htmlFor={item.id} className="field__label">
               {item.fieldname}
             </label>
